@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Quiz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f9;
+            margin: 0;
+        }
+        .container {
+            text-align: center;
+            padding: 20px;
+            border-radius: 8px;
+            background: white;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+        }
+        h2 {
+            color: #333;
+        }
+        .question {
+            text-align: left;
+            margin: 10px 0;
+        }
+        .button-group {
+            margin-top: 15px;
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            font-size: 1em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Quiz</h2>
+        <form method="post">
+            <!-- Fill in the blank question -->
+            <div class="question">
+                <label>1. ________ is the longest river in the world?</label><br>
+                <input type="text" name="fill_blank" required>
+            </div>
+
+            <!-- Multiple-choice question -->
+            <div class="question">
+                <label>2. Which of the following is the capital of France?</label><br>
+                <input type="radio" name="mcq" value="Paris" required> Paris<br>
+                <input type="radio" name="mcq" value="Madrid"> Madrid<br>
+                <input type="radio" name="mcq" value="Port Harcourt"> Port Harcourt<br>
+                <input type="radio" name="mcq" value="Port-au-Prince"> Port-au-Prince<br>
+            </div>
+
+            <!-- Multiple-answer question (checkboxes) -->
+            <div class="question">
+                <label>3. Tamil is the official language of which of the following countries? (Select exactly 2)</label><br>
+                <input type="checkbox" name="checkbox" value="India"> India<br>
+                <input type="checkbox" name="checkbox" value="Indonesia"> Indonesia<br>
+                <input type="checkbox" name="checkbox" value="Singapore"> Singapore<br>
+                <input type="checkbox" name="checkbox" value="Malaysia"> Malaysia<br>
+            </div>
+
+            <!-- Submit and Reset buttons -->
+            <div class="button-group">
+                <button type="submit">Submit</button>
+            </div>
+            <br>
+            Click <a href="/">here</a> to go back home<br>
+        </form>
+        
+        {% if result_summary and result_detail %}
+            <h3>{{ result_summary }}</h3>
+            <ul>
+                {% for detail in result_detail %}
+                    <li>{{ detail }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+</body>
+</html>
